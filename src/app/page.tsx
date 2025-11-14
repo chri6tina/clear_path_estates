@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { locations } from "@/lib/location-data";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "#services" },
+  { label: "Locations", href: "/locations" },
   { label: "Process", href: "#process" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
@@ -53,7 +55,10 @@ const testimonials = [
   },
 ];
 
-const coverageAreas = ["San Marco", "Riverside", "Avondale", "Mandarin", "Ponte Vedra", "St. Johns", "Atlantic Beach", "Amelia Island"];
+const coverageAreas = locations.map(({ name, slug }) => ({
+  name,
+  slug,
+}));
 
 const faqs = [
   {
@@ -95,7 +100,7 @@ export default function Home() {
       postalCode: "32202",
       addressCountry: "US",
     },
-    areaServed: coverageAreas.join(", "),
+    areaServed: coverageAreas.map((area) => area.name).join(", "),
     description:
       "Clear Path Estates provides estate sales, cleanouts, donation coordination, and home buyouts across Jacksonville and Northeast Florida.",
   };
@@ -281,12 +286,13 @@ export default function Home() {
             <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
               <div className="flex flex-wrap gap-3 text-sm text-[#4a4a4a]">
                 {coverageAreas.map((area) => (
-                  <span
-                    key={area}
-                    className="inline-flex min-w-[140px] items-center justify-center rounded-full border border-[#ddd] bg-white px-5 py-3 text-sm font-medium text-[#3b3b3b] shadow-[0_6px_15px_rgba(0,0,0,0.06)]"
+                  <Link
+                    key={area.slug}
+                    href={`/locations/${area.slug}`}
+                    className="inline-flex min-w-[140px] items-center justify-center rounded-full border border-[#ddd] bg-white px-5 py-3 text-sm font-medium text-[#3b3b3b] shadow-[0_6px_15px_rgba(0,0,0,0.06)] hover:border-[#0f0f0f]"
                   >
-                    {area}
-                  </span>
+                    {area.name}
+                  </Link>
                 ))}
               </div>
               <div className="rounded-[24px] border border-dashed border-[#e0d6cc] bg-gradient-to-br from-[#fef9f1] to-white p-6 text-sm text-[#4a4a4a]">
