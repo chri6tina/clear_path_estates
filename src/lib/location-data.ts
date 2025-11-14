@@ -1,3 +1,448 @@
+export type LocationContent = {
+  slug: string;
+  name: string;
+  cityLine: string;
+  heroHeadline: string;
+  heroDescription: string;
+  heroStats: { value: string; label: string }[];
+  serviceHighlights: { title: string; detail: string }[];
+  localHighlights: string[];
+  recentProjects: { title: string; stat: string; detail: string }[];
+  seoTitle: string;
+  seoDescription: string;
+  keywords: string[];
+};
+
+export const locations: LocationContent[] = [
+  {
+    slug: "san-marco",
+    name: "San Marco",
+    cityLine: "San Marco • Jacksonville, FL",
+    heroHeadline: "Estate sales for San Marco’s historic riverfront homes.",
+    heroDescription:
+      "We protect architectural details, coordinate with HOA boards, and attract buyers for fine art, antiques, and designer furnishings popular throughout San Marco.",
+    heroStats: [
+      { value: "$115K", label: "record San Marco weekend sale" },
+      { value: "48 hrs", label: "average cleanout timeline" },
+      { value: "12", label: "historic districts served" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Historic home staging",
+        detail: "White-glove cataloging with museum-quality photo sets for Mediterranean, Tudor, and Art Deco interiors.",
+      },
+      {
+        title: "Designer + collector outreach",
+        detail: "Private buyer lists covering Riverside Arts Market vendors, interior designers, and out-of-state collectors.",
+      },
+      {
+        title: "Donation & buyout options",
+        detail: "Fast offers for remaining lots plus same-week donations to San Marco charities and thrift partners.",
+      },
+    ],
+    localHighlights: [
+      "HOA notice templates for Riverfront, Granada, and Southbank associations.",
+      "Preferred parking plans for narrow San Marco streets and riverfront cul-de-sacs.",
+      "Climate-controlled storage partners on Hendricks Ave. for staged collections.",
+    ],
+    recentProjects: [
+      {
+        title: "Riverfront estate",
+        stat: "$92K | 2-day sale",
+        detail: "Sold vintage Steinway, sterling sets, and fine art to national buyers with white-glove packing.",
+      },
+      {
+        title: "San Marco Square downsizing",
+        stat: "72 hr cleanout",
+        detail: "Cleared three stories, documented heirloom china, and coordinated buyout of remaining furniture.",
+      },
+    ],
+    seoTitle: "San Marco Estate Sales & Cleanouts | Clear Path Estates",
+    seoDescription:
+      "Clear Path Estates manages San Marco estate sales, donation coordination, and house buyouts with historic-district compliant logistics.",
+    keywords: [
+      "San Marco estate sales",
+      "San Marco cleanout services",
+      "Jacksonville historic home liquidation",
+      "San Marco donation pickups",
+    ],
+  },
+  {
+    slug: "riverside",
+    name: "Riverside",
+    cityLine: "Riverside • Jacksonville, FL",
+    heroHeadline: "Riverside and Five Points estates handled with local expertise.",
+    heroDescription:
+      "From bungalow collections to Craftsman mansions, we deliver transparent reporting, fast buyouts, and donation placement that fits Riverside’s creative vibe.",
+    heroStats: [
+      { value: "$86K", label: "highest Riverside sale" },
+      { value: "350+", label: "average buyers per weekend" },
+      { value: "10", label: "gallery partners nearby" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Collector marketing",
+        detail: "Target emails to Cummer Museum patrons, Five Points vintage dealers, and art collectors.",
+      },
+      {
+        title: "Eco-friendly cleanouts",
+        detail: "Partnerships with local reuse centers to keep Riverside’s sustainability goals intact.",
+      },
+      {
+        title: "Studio + loft buyouts",
+        detail: "Rapid offers for mixed-use properties, perfect for relocating artists or investors.",
+      },
+    ],
+    localHighlights: [
+      "City permit pull-through for Herschel St. and Oak St. parking restrictions.",
+      "Coordination with neighborhood associations for signage and crowd management.",
+      "Preferred movers for narrow Riverside driveways and alley access.",
+    ],
+    recentProjects: [
+      {
+        title: "Five Points artist loft",
+        stat: "$48K sale",
+        detail: "Sold mid-century furniture and art supplies, bought out unsold canvases for corporate staging.",
+      },
+      {
+        title: "Riverside bungalow",
+        stat: "10-day start-to-finish",
+        detail: "Cataloged 450 lots, hosted a two-day sale, and donated remaining goods to a local reuse store.",
+      },
+    ],
+    seoTitle: "Riverside Estate Sales & Donation Coordination | Clear Path Estates",
+    seoDescription:
+      "Need an estate sale in Riverside or Five Points? Clear Path Estates manages sales, eco cleanouts, and investor buyouts with local logistics dialed in.",
+    keywords: [
+      "Riverside Jacksonville estate sales",
+      "Five Points cleanouts",
+      "Riverside donation pickup",
+      "Jacksonville investor buyouts",
+    ],
+  },
+  {
+    slug: "avondale",
+    name: "Avondale",
+    cityLine: "Avondale • Jacksonville, FL",
+    heroHeadline: "Avondale estates marketed to high-end collectors.",
+    heroDescription:
+      "We preserve Avondale’s stately charm while maximizing returns on antiques, designer lighting, and curated art collections.",
+    heroStats: [
+      { value: "$102K", label: "top Avondale sale" },
+      { value: "15", label: "designer partners" },
+      { value: "3 days", label: "average cleanout" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Historic preservation focus",
+        detail: "Detailed cataloging for Early 20th-century architecture, ensuring fixtures and built-ins stay protected.",
+      },
+      {
+        title: "High-net-worth buyer lists",
+        detail: "Outreach to Ortega, Venetia, and Ortega Forest buyers for heirloom purchases.",
+      },
+      {
+        title: "Estate donation concierge",
+        detail: "Handle Avondale Presbyterian thrift donations, receipts, and pickup schedules.",
+      },
+    ],
+    localHighlights: [
+      "Preferred staging warehouse minutes from St. Johns Ave.",
+      "Event coordination for restricted parking corridors.",
+      "Partnership with local auction houses for specialty lots.",
+    ],
+    recentProjects: [
+      {
+        title: "St. Johns Ave. estate",
+        stat: "$102K weekend",
+        detail: "High-end furniture, bronze sculpture, and Persian rugs sold with remote bidder participation.",
+      },
+      {
+        title: "Avondale carriage house",
+        stat: "72-hour cleanout",
+        detail: "Cleared carriage house, coordinated buyout of shop tools, and sold home within a week.",
+      },
+    ],
+    seoTitle: "Avondale Estate Sales & Cleanouts | Clear Path Estates",
+    seoDescription:
+      "Clear Path Estates manages Avondale estate sales, charity donations, and expedited cleanouts tailored to historic homes.",
+    keywords: [
+      "Avondale estate sales",
+      "Avondale Jacksonville cleanouts",
+      "St. Johns Avenue estate services",
+      "Avondale donation coordination",
+    ],
+  },
+  {
+    slug: "mandarin",
+    name: "Mandarin",
+    cityLine: "Mandarin • Jacksonville, FL",
+    heroHeadline: "Mandarin estate sales plus large-lot cleanouts.",
+    heroDescription:
+      "We handle sprawling riverfront homes, barns, and outbuildings throughout Mandarin with dedicated crews, dumpsters, and donation partners.",
+    heroStats: [
+      { value: "8 acres", label: "largest Mandarin cleanout" },
+      { value: "$76K", label: "Mandarin sale record" },
+      { value: "5", label: "local charity partners" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Acreage-ready logistics",
+        detail: "Portable storage, tractor access, and dismissal plans for equipment on Julington Creek properties.",
+      },
+      {
+        title: "Barn + workshop sales",
+        detail: "Specialty marketing for tools, vehicles, and agricultural equipment.",
+      },
+      {
+        title: "Donation + buyout programs",
+        detail: "We buy remaining furniture lots or donate them to Mandarin-area nonprofits within 48 hours.",
+      },
+    ],
+    localHighlights: [
+      "HOA coordination for Julington Creek Plantation and gated Mandarin riverfront communities.",
+      "Preferred waste partners for larger debris removal.",
+      "Boat dock cleanouts and coordination with marine donation groups.",
+    ],
+    recentProjects: [
+      {
+        title: "Julington Creek estate",
+        stat: "$76K | 3-day sale",
+        detail: "Sold classic cars, workshop equipment, and fine furniture with secure payment processing.",
+      },
+      {
+        title: "Old Mandarin farmhouse",
+        stat: "5 dumpsters in 4 days",
+        detail: "Cleared barns, transferred livestock gear, and staged home for listing.",
+      },
+    ],
+    seoTitle: "Mandarin Estate Sales, Barn Cleanouts & Buyouts | Clear Path Estates",
+    seoDescription:
+      "Mandarin homeowners trust Clear Path Estates for acreage-ready estate sales, donation coordination, and guaranteed buyouts.",
+    keywords: [
+      "Mandarin estate sales",
+      "Julington Creek cleanout",
+      "Mandarin donation pickup",
+      "Mandarin house buyout",
+    ],
+  },
+  {
+    slug: "ponte-vedra",
+    name: "Ponte Vedra",
+    cityLine: "Ponte Vedra • St. Johns County, FL",
+    heroHeadline: "Luxury Ponte Vedra estates, downsizes, and buyouts.",
+    heroDescription:
+      "We deliver concierge-level estate services for Sawgrass, Marsh Landing, Nocatee, and coastal communities complete with white-glove crews and buyer vetting.",
+    heroStats: [
+      { value: "$145K", label: "largest Ponte Vedra sale" },
+      { value: "24 hrs", label: "average response time" },
+      { value: "6", label: "HOA partners" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Luxury marketing",
+        detail: "Private previews for Ponte Vedra & Nocatee buyers plus virtual catalogs for remote investors.",
+      },
+      {
+        title: "Coastal cleanouts",
+        detail: "Special handling for climate-sensitive inventory and coastal storage.",
+      },
+      {
+        title: "Guaranteed buyouts",
+        detail: "Purchase remaining designer furniture or entire house contents for fast closings.",
+      },
+    ],
+    localHighlights: [
+      "Sawgrass and Marsh Landing gate coordination and guest lists.",
+      "Preferred delivery partners for coastal buyers and out-of-state shipping.",
+      "Donation pickups benefitting Ponte Vedra Beaches Habitat and local charities.",
+    ],
+    recentProjects: [
+      {
+        title: "Marsh Landing estate",
+        stat: "$145K sale",
+        detail: "Sold designer furnishings, fine art, and wine collection with international bidders.",
+      },
+      {
+        title: "Nocatee buyout",
+        stat: "Closed in 5 days",
+        detail: "Purchased entire home contents to accelerate relocation closing timeline.",
+      },
+    ],
+    seoTitle: "Ponte Vedra Estate Sales & House Buyouts | Clear Path Estates",
+    seoDescription:
+      "Luxury-focused estate sales, donation coordination, and full-house buyouts for Ponte Vedra, Sawgrass, and Nocatee homeowners.",
+    keywords: [
+      "Ponte Vedra estate sale company",
+      "Sawgrass cleanout",
+      "Nocatee donation pickup",
+      "Marsh Landing house buyout",
+    ],
+  },
+  {
+    slug: "st-johns",
+    name: "St. Johns",
+    cityLine: "St. Johns County, FL",
+    heroHeadline: "St. Johns estates and senior downsizes with local crews.",
+    heroDescription:
+      "We support growing St. Johns communities—Julington Creek, CR-210, SilverLeaf—with schedule-driven estate sales plus donation and buyout options.",
+    heroStats: [
+      { value: "900+", label: "St. Johns lots cataloged" },
+      { value: "15", label: "senior communities served" },
+      { value: "4 days", label: "average sale launch" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Community coordination",
+        detail: "Approved vendor with multiple CDD and HOA boards for signage, parking, and guard gates.",
+      },
+      {
+        title: "Senior-focused downsizing",
+        detail: "Compassionate teams for active adult communities with donation planning and shipping to family.",
+      },
+      {
+        title: "Buyout + clean sweep",
+        detail: "Guaranteed offers for remaining items so closing timelines stay on track.",
+      },
+    ],
+    localHighlights: [
+      "Relationships with SilverLeaf, Shearwater, and Beacon Lake management teams.",
+      "Preferred storage partners along CR-210.",
+      "Donation network spanning St. Johns County charities and church programs.",
+    ],
+    recentProjects: [
+      {
+        title: "Julington Creek resale",
+        stat: "$58K weekend",
+        detail: "Modern furnishings and outdoor living packages sold via in-person and virtual bidders.",
+      },
+      {
+        title: "Shearwater relocation",
+        stat: "48 hr clean sweep",
+        detail: "Coordinated donation truck, buyout offer, and broom-swept turnover for closing.",
+      },
+    ],
+    seoTitle: "St. Johns Estate Sales & Clean Sweeps | Clear Path Estates",
+    seoDescription:
+      "St. Johns County trusts Clear Path Estates for schedule-driven estate sales, senior downsizes, and donation/buyout coordination.",
+    keywords: [
+      "St. Johns estate sale",
+      "CR-210 cleanout service",
+      "SilverLeaf downsizing",
+      "St. Johns County donation pickup",
+    ],
+  },
+  {
+    slug: "atlantic-beach",
+    name: "Atlantic Beach",
+    cityLine: "Atlantic Beach • Jacksonville Beaches",
+    heroHeadline: "Atlantic Beach estate sales and coastal cleanouts.",
+    heroDescription:
+      "We manage oceanfront and beachside downsizes with climate-aware storage, coastal buyers, and flexible scheduling around HOA/condo rules.",
+    heroStats: [
+      { value: "$68K", label: "top beach sale" },
+      { value: "24 hrs", label: "response time" },
+      { value: "5", label: "beach HOA partners" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Coastal asset care",
+        detail: "Protect art and furniture from salt air with climate trucks and shrink-wrapping.",
+      },
+      {
+        title: "Beach parking + access",
+        detail: "Plan elevator reservations, wristbands, and parking passes for condos and gated communities.",
+      },
+      {
+        title: "Donation + buyout safety net",
+        detail: "Remaining furniture routed to Beaches Habitat or bought out for fast closings.",
+      },
+    ],
+    localHighlights: [
+      "Coordination with Atlantic Beach, Neptune Beach, and Mayport HOA boards.",
+      "Preferred moving teams for condos on Ocean Blvd., Seminole Rd., and Fleet Landing.",
+      "Marine donation partners for fishing gear and boats.",
+    ],
+    recentProjects: [
+      {
+        title: "Ocean Blvd. penthouse",
+        stat: "$68K multi-day sale",
+        detail: "High-end coastal decor sold to buyers from Ponte Vedra to Fernandina.",
+      },
+      {
+        title: "Fleet Landing buyout",
+        stat: "Closed in 72 hrs",
+        detail: "Purchased entire condo contents to meet quick move-in deadlines.",
+      },
+    ],
+    seoTitle: "Atlantic Beach Estate Sales & Coastal Cleanouts | Clear Path Estates",
+    seoDescription:
+      "Atlantic Beach homeowners rely on Clear Path Estates for HOA-compliant estate sales, coastal donation pickups, and house buyouts.",
+    keywords: [
+      "Atlantic Beach estate sale company",
+      "Jacksonville Beach cleanout",
+      "Atlantic Beach donation pickup",
+      "Fleet Landing buyout",
+    ],
+  },
+  {
+    slug: "amelia-island",
+    name: "Amelia Island",
+    cityLine: "Amelia Island • Nassau County, FL",
+    heroHeadline: "Amelia Island estates with resort-style service.",
+    heroDescription:
+      "From historic Fernandina Beach cottages to golf-course homes, we provide destination-level estate sales, donation coordination, and buyout solutions.",
+    heroStats: [
+      { value: "$74K", label: "highest Amelia Island sale" },
+      { value: "6", label: "resort communities served" },
+      { value: "300+", label: "average attendees" },
+    ],
+    serviceHighlights: [
+      {
+        title: "Resort + club coordination",
+        detail: "Access management for Amelia Island Plantation, Summer Beach, and Long Point communities.",
+      },
+      {
+        title: "Destination buyers",
+        detail: "Market to golf club members, vacation-home investors, and Fernandina collectors.",
+      },
+      {
+        title: "Estate donation & buyout",
+        detail: "Remaining furnishings donated to Nassau County nonprofits or purchased outright for quick turnovers.",
+      },
+    ],
+    localHighlights: [
+      "Preferred logistics partners for ferry/dock access and gated communities.",
+      "Storage and shipping coordination for out-of-state heirs.",
+      "Relationships with Amelia Island Museum of History and local preservationists.",
+    ],
+    recentProjects: [
+      {
+        title: "Amelia Island Plantation villa",
+        stat: "$74K sale",
+        detail: "Sold coastal furniture, artwork, and golf carts with worldwide bidder participation.",
+      },
+      {
+        title: "Historic Fernandina cottage",
+        stat: "One-week turnaround",
+        detail: "Documented heirlooms, held a boutique sale, and arranged donation receipts for new owners.",
+      },
+    ],
+    seoTitle: "Amelia Island Estate Sales & Donation Services | Clear Path Estates",
+    seoDescription:
+      "Plan an Amelia Island estate sale or donation/buyout with Clear Path Estates—trusted across Fernandina Beach, Summer Beach, and resort communities.",
+    keywords: [
+      "Amelia Island estate sale",
+      "Fernandina Beach cleanout",
+      "Amelia Island donation pickup",
+      "Amelia Plantation buyout",
+    ],
+  },
+];
+
+export const locationMap = Object.fromEntries(
+  locations.map((location) => [location.slug, location])
+);
 export type LocationData = {
   slug: string;
   name: string;
