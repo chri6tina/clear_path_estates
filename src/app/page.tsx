@@ -86,7 +86,7 @@ export default function Home() {
     "@type": "LocalBusiness",
     name: "Clear Path Estates",
     url: "https://www.clearpathestates.com",
-    telephone: "+1-904-555-1234",
+    telephone: "+1-904-456-3851",
     address: {
       "@type": "PostalAddress",
       streetAddress: "25 Ocean St.",
@@ -200,8 +200,8 @@ export default function Home() {
                 </button>
                 <p className="text-xs text-[#777]">
                   Prefer to call?{" "}
-                  <a href="tel:+19045551234" className="font-semibold text-black">
-                    (904) 555-1234
+                  <a href="tel:+19044563851" className="font-semibold text-black">
+                    (904) 456-3851
                   </a>
                 </p>
               </form>
@@ -323,7 +323,7 @@ export default function Home() {
                 <p className="text-sm text-[#d6d6d6]">Reach out for a free walkthrough and custom plan for your estate or cleanout project.</p>
                 <div className="space-y-2 text-sm text-[#d6d6d6]">
                   <p>
-                    Phone: <a href="tel:+19045551234" className="font-semibold text-white">(904) 555-1234</a>
+                    Phone: <a href="tel:+19044563851" className="font-semibold text-white">(904) 456-3851</a>
                   </p>
                   <p>
                     Email: <a href="mailto:hello@clearpathestates.com" className="font-semibold text-white">hello@clearpathestates.com</a>
