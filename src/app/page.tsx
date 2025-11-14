@@ -28,10 +28,10 @@ const services = [
     points: ["Donation coordination", "Hauling & disposal", "Ready-to-list finishes"],
   },
   {
-    title: "Probate Support",
-    description: "Photo logs, valuations, and reporting for attorneys and executors across Florida.",
-    icon: "📑",
-    points: ["Photo documentation", "Heir dashboards", "Court-ready reports"],
+    title: "Donations & Buyouts",
+    description: "We place unsold items with local charities or purchase lots outright for fast timelines.",
+    icon: "🏠",
+    points: ["Charity partnerships", "House + contents buyouts", "Net sheets within 48 hrs"],
   },
 ];
 
@@ -48,8 +48,8 @@ const testimonials = [
     name: "Linda M. – Riverside",
   },
   {
-    quote: "As probate counsel, I count on their documentation and quick responses—everything is handled.",
-    name: "James R. – Attorney",
+    quote: "Our brokerage trusts them for donation pickups and guaranteed buyouts when homes must close fast.",
+    name: "James R. – Realtor Partner",
   },
 ];
 
@@ -97,7 +97,7 @@ export default function Home() {
     },
     areaServed: coverageAreas.join(", "),
     description:
-      "Clear Path Estates provides estate sales, cleanouts, and probate support across Jacksonville and Northeast Florida.",
+      "Clear Path Estates provides estate sales, cleanouts, donation coordination, and home buyouts across Jacksonville and Northeast Florida.",
   };
 
   return (
@@ -130,7 +130,7 @@ export default function Home() {
               <p className="text-xs uppercase tracking-[0.4em] text-[#777]">Estate Sales & Cleanouts</p>
               <h1 className="text-5xl font-semibold leading-tight text-[#0f0f0f]">We provide efficient estate services for Jacksonville families.</h1>
               <p className="text-lg text-[#4a4a4a]">
-                Comprehensive estate sales, cleanouts, and probate coordination for residential, multi-family, and commercial properties across Northeast Florida.
+                Comprehensive estate sales, cleanouts, donation coordination, and house buyouts for residential, multi-family, and commercial properties across Northeast Florida.
               </p>
               <div className="flex flex-wrap gap-4 text-sm font-medium">
                 <Link href="#services" className="rounded-full bg-[#f9b233] px-6 py-3 text-black shadow hover:bg-[#eda524]">
@@ -190,7 +190,7 @@ export default function Home() {
                   >
                     <option>Estate Sale</option>
                     <option>Cleanout</option>
-                    <option>Probate Support</option>
+                    <option>Donations & Buyouts</option>
                   </select>
                 </label>
                 <label className="block font-semibold text-[#0f0f0f]">
@@ -372,7 +372,7 @@ export default function Home() {
                   >
                     <option>Estate Sale</option>
                     <option>Cleanout</option>
-                    <option>Probate Support</option>
+                    <option>Donations & Buyouts</option>
                   </select>
                 </label>
                 <label className="text-sm font-semibold">
