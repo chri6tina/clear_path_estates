@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     description:
       "Estate sale pros focused on Jacksonville families, complete cleanouts, and probate coordination.",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
