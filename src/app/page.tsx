@@ -159,12 +159,17 @@ export default function Home() {
               <p className="mt-2 text-sm text-[#4a4a4a]">
                 Share the basics and our Jacksonville coordinator will be in touch within one business day.
               </p>
-              <form className="mt-6 space-y-4 text-sm">
+              <form
+                className="mt-6 space-y-4 text-sm"
+                action="https://formspree.io/f/mrbrendl"
+                method="POST"
+              >
                 <label className="block font-semibold text-[#0f0f0f]">
                   Full name
                   <input
                     type="text"
                     placeholder="Jane Smith"
+                    name="fullName"
                     className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none"
                   />
                 </label>
@@ -173,12 +178,16 @@ export default function Home() {
                   <input
                     type="email"
                     placeholder="you@email.com"
+                    name="email"
                     className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none"
                   />
                 </label>
                 <label className="block font-semibold text-[#0f0f0f]">
                   Service needed
-                  <select className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none">
+                  <select
+                    className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none"
+                    name="service"
+                  >
                     <option>Estate Sale</option>
                     <option>Cleanout</option>
                     <option>Probate Support</option>
@@ -186,7 +195,10 @@ export default function Home() {
                 </label>
                 <label className="block font-semibold text-[#0f0f0f]">
                   Target timeline
-                  <select className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none">
+                  <select
+                    className="mt-2 w-full rounded-xl border border-[#ddd] px-4 py-3 text-sm focus:border-black focus:outline-none"
+                    name="timeline"
+                  >
                     <option>Next 2 weeks</option>
                     <option>Next 30 days</option>
                     <option>60+ days out</option>
@@ -331,18 +343,33 @@ export default function Home() {
                   <p>Office: Downtown Jacksonville</p>
                 </div>
               </div>
-              <form className="grid gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 text-white backdrop-blur">
+              <form
+                className="grid gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 text-white backdrop-blur"
+                action="https://formspree.io/f/mrbrendl"
+                method="POST"
+              >
                 <label className="text-sm font-semibold">
                   Name
-                  <input className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none" placeholder="Jane Smith" />
+                  <input
+                    className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none"
+                    placeholder="Jane Smith"
+                    name="fullName"
+                  />
                 </label>
                 <label className="text-sm font-semibold">
                   Email
-                  <input className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none" placeholder="you@email.com" />
+                  <input
+                    className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none"
+                    placeholder="you@email.com"
+                    name="email"
+                  />
                 </label>
                 <label className="text-sm font-semibold">
                   Service needed
-                  <select className="mt-2 w-full rounded-xl border border-white/30 bg-white px-4 py-3 text-sm text-[#1f1f1f] focus:border-white focus:outline-none">
+                  <select
+                    className="mt-2 w-full rounded-xl border border-white/30 bg-white px-4 py-3 text-sm text-[#1f1f1f] focus:border-white focus:outline-none"
+                    name="service"
+                  >
                     <option>Estate Sale</option>
                     <option>Cleanout</option>
                     <option>Probate Support</option>
@@ -350,7 +377,12 @@ export default function Home() {
                 </label>
                 <label className="text-sm font-semibold">
                   Notes
-                  <textarea className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none" rows={4} placeholder="Share timelines, addresses, or special requests." />
+                  <textarea
+                    className="mt-2 w-full rounded-xl border border-white/30 bg-transparent px-4 py-3 text-sm text-white placeholder:text-[#bdbdbd] focus:border-white focus:outline-none"
+                    rows={4}
+                    placeholder="Share timelines, addresses, or special requests."
+                    name="notes"
+                  />
                 </label>
                 <button type="submit" className="rounded-full bg-[#f9b233] px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-black shadow hover:bg-[#eda524]">
                   Send Message
