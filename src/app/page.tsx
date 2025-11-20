@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { locations } from "@/lib/location-data";
+import ProcessRoadmap from "@/components/ProcessRoadmap";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -261,21 +262,8 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="process" className="rounded-[40px] bg-[#0f0f0f] px-10 py-12 text-white shadow-[0_30px_70px_rgba(0,0,0,0.25)]">
-            <div className="flex flex-col gap-3">
-              <p className="text-xs uppercase tracking-[0.5em] text-[#f9b233]">Our process</p>
-              <h2 className="text-3xl font-semibold">A guided playbook for every estate.</h2>
-              <p className="text-sm text-[#d6d6d6]">Dedicated project managers keep you informed at every milestone.</p>
-            </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-4">
-              {processSteps.map((step) => (
-                <article key={step.title} className="rounded-[24px] border border-white/15 bg-white/5 p-6 backdrop-blur">
-                  <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#f9b233]">Step {step.step}</p>
-                  <h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3>
-                  <p className="mt-2 text-sm text-[#d1d1d1]">{step.detail}</p>
-                </article>
-              ))}
-            </div>
+          <section id="process">
+            <ProcessRoadmap />
           </section>
 
           <section id="coverage" className="rounded-[32px] bg-white px-8 py-10 shadow-[0_40px_80px_rgba(0,0,0,0.06)]">

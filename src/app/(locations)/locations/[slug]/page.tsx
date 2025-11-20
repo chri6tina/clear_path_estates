@@ -2,9 +2,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { locationMap, locations } from "@/lib/location-data";
+import ProcessRoadmap from "@/components/ProcessRoadmap";
 
 type LocationPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -12,7 +13,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
-  const location = locationMap[params.slug];
+  const { slug } = await params;
+  const location = locationMap[slug];
   if (!location) {
     return {};
   }
@@ -27,16 +29,16 @@ export async function generateMetadata({ params }: LocationPageProps): Promise<M
   };
 }
 
-export default function LocationPage({ params }: LocationPageProps) {
-  const location = locationMap[params.slug];
+export default async function LocationPage({ params }: LocationPageProps) {
+  const { slug } = await params;
+  const location = locationMap[slug];
 
   if (!location) {
     notFound();
   }
 
   return (
-    <div className="bg-white text-[#1f1f1f]">
-      <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-12 lg:px-8">
+    <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-12 lg:px-8">
         <section className="grid gap-10 rounded-[32px] bg-[#f6f3ef] px-8 py-10 md:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-6">
             <p className="text-xs uppercase tracking-[0.4em] text-[#867a6d]">{location.cityLine}</p>
@@ -146,6 +148,61 @@ export default function LocationPage({ params }: LocationPageProps) {
           </div>
         </section>
 
+        {location.aboutSection && (
+          <section className="rounded-[32px] bg-gradient-to-br from-[#fef9f1] to-[#f5f5f5] px-8 py-10 shadow-[0_25px_60px_rgba(0,0,0,0.05)]">
+            <p className="text-xs uppercase tracking-[0.4em] text-[#777]">About {location.name}</p>
+            <h2 className="mt-2 text-3xl font-semibold text-[#0f0f0f]">Why families choose {location.name} for estate services.</h2>
+            <p className="mt-4 text-base leading-relaxed text-[#4a4a4a]">{location.aboutSection}</p>
+            {location.neighborhoodInfo && location.neighborhoodInfo.length > 0 && (
+              <>
+                <h3 className="mt-6 text-xl font-semibold text-[#0f0f0f]">What makes {location.name} special:</h3>
+                <ul className="mt-4 space-y-2 text-sm text-[#4a4a4a]">
+                  {location.neighborhoodInfo.map((info, idx) => (
+                    <li key={idx} className="flex gap-3">
+                      <span className="mt-1 block h-2 w-2 rounded-full bg-[#f9b233]" />
+                      <span>{info}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </section>
+        )}
+
+        {location.additionalServices && location.additionalServices.length > 0 && (
+          <section className="rounded-[32px] bg-white px-8 py-10 shadow-[0_25px_60px_rgba(0,0,0,0.05)]">
+            <p className="text-xs uppercase tracking-[0.4em] text-[#777]">Additional services</p>
+            <h2 className="mt-2 text-3xl font-semibold text-[#0f0f0f]">Specialized {location.name} estate solutions.</h2>
+            <ul className="mt-6 grid gap-4 md:grid-cols-2">
+              {location.additionalServices.map((service, idx) => (
+                <li key={idx} className="flex gap-3 text-sm text-[#4a4a4a]">
+                  <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-[#f9b233]" />
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {location.faqs && location.faqs.length > 0 && (
+          <section className="rounded-[32px] bg-[#f8f5f1] px-8 py-10">
+            <p className="text-xs uppercase tracking-[0.4em] text-[#777]">FAQ</p>
+            <h2 className="mt-2 text-3xl font-semibold text-[#0f0f0f]">Common questions about {location.name} estate services.</h2>
+            <div className="mt-6 space-y-4">
+              {location.faqs.map((faq, idx) => (
+                <details key={idx} className="rounded-[20px] border border-[#ddd] bg-white px-6 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                  <summary className="cursor-pointer text-base font-semibold text-[#0f0f0f]">{faq.question}</summary>
+                  <p className="mt-3 text-sm leading-relaxed text-[#4a4a4a]">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="rounded-[32px]">
+          <ProcessRoadmap />
+        </section>
+
         <section className="rounded-[32px] bg-[#0f0f0f] px-8 py-10 text-white">
           <div className="flex flex-col gap-4">
             <p className="text-xs uppercase tracking-[0.4em] text-[#f9b233]">Next steps</p>
@@ -177,7 +234,6 @@ export default function LocationPage({ params }: LocationPageProps) {
           </Link>
         </div>
       </main>
-    </div>
   );
 }
 

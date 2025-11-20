@@ -10,8 +10,7 @@ export const metadata: Metadata = {
 
 export default function LocationsIndexPage() {
   return (
-    <div className="bg-white text-[#1f1f1f]">
-      <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-12 lg:px-8">
+    <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-12 lg:px-8">
         <section className="rounded-[32px] bg-[#f7f4ef] px-10 py-12 shadow-[0_30px_70px_rgba(0,0,0,0.05)]">
           <p className="text-xs uppercase tracking-[0.4em] text-[#877c6e]">Service areas</p>
           <h1 className="mt-3 text-4xl font-semibold text-[#0f0f0f]">Jacksonville & Coastal Florida neighborhoods we support.</h1>
@@ -43,7 +42,6 @@ export default function LocationsIndexPage() {
           ))}
         </section>
       </main>
-    </div>
   );
 }
 
