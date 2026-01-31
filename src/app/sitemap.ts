@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { locations } from "@/lib/location-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.clearpathestates.com";
+  const baseUrl = "https://www.estatesaleandcleanouts.com";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

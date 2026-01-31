@@ -1,6 +1,7 @@
 export type LocationContent = {
   slug: string;
   name: string;
+  county: string;
   cityLine: string;
   heroHeadline: string;
   heroDescription: string;
@@ -17,7 +18,9 @@ export type LocationContent = {
   additionalServices?: string[];
 };
 
-export const locations: LocationContent[] = [
+type ManualLocation = Omit<LocationContent, "county"> & { county?: string };
+
+const manualLocations: ManualLocation[] = [
   {
     slug: "san-marco",
     name: "San Marco",
@@ -1587,6 +1590,235 @@ export const locations: LocationContent[] = [
     ],
   },
 ];
+
+const countyBySlug: Record<string, string> = {
+  "ponte-vedra": "St. Johns County, FL",
+  "st-johns": "St. Johns County, FL",
+  "amelia-island": "Nassau County, FL",
+  "orange-park": "Clay County, FL",
+  "fleming-island": "Clay County, FL",
+  "green-cove-springs": "Clay County, FL",
+  "middleburg": "Clay County, FL",
+  "yulee-nassauville": "Nassau County, FL",
+};
+
+const manualLocationsWithCounty: LocationContent[] = manualLocations.map((location) => ({
+  ...location,
+  county: location.county ?? countyBySlug[location.slug] ?? "Duval County, FL",
+}));
+
+type LocationSeed = {
+  name: string;
+  county: string;
+  cityLine?: string;
+};
+
+const jacksonvilleNeighborhoodSeeds: LocationSeed[] = [
+  { name: "Arlington", county: "Duval County, FL" },
+  { name: "Bartram Springs", county: "Duval County, FL" },
+  { name: "Bayard", county: "Duval County, FL" },
+  { name: "Baymeadows", county: "Duval County, FL" },
+  { name: "Brentwood", county: "Duval County, FL" },
+  { name: "Brooklyn", county: "Duval County, FL" },
+  { name: "Downtown Core", county: "Duval County, FL" },
+  { name: "Deercreek", county: "Duval County, FL" },
+  { name: "Deerwood", county: "Duval County, FL" },
+  { name: "Durkeeville", county: "Duval County, FL" },
+  { name: "Eastside", county: "Duval County, FL" },
+  { name: "Fairfield", county: "Duval County, FL" },
+  { name: "Garden City", county: "Duval County, FL" },
+  { name: "Jacksonville Beaches", county: "Duval County, FL" },
+  { name: "LaVilla", county: "Duval County, FL" },
+  { name: "Lake Shore", county: "Duval County, FL" },
+  { name: "Mayport", county: "Duval County, FL" },
+  { name: "Murray Hill", county: "Duval County, FL" },
+  { name: "New Town", county: "Duval County, FL" },
+  { name: "Northbank", county: "Duval County, FL" },
+  { name: "Northside", county: "Duval County, FL" },
+  { name: "Oakland", county: "Duval County, FL" },
+  { name: "Oceanway", county: "Duval County, FL" },
+  { name: "Panama Park", county: "Duval County, FL" },
+  { name: "Point La Vista", county: "Duval County, FL" },
+  { name: "Riverview", county: "Duval County, FL" },
+  { name: "Sandalwood", county: "Duval County, FL" },
+  { name: "San Jose", county: "Duval County, FL" },
+  { name: "Southbank", county: "Duval County, FL" },
+  { name: "St. Nicholas", county: "Duval County, FL" },
+];
+
+const metroAreaSeeds: LocationSeed[] = [
+  { name: "Glen St. Mary", county: "Baker County, FL" },
+  { name: "Macclenny", county: "Baker County, FL" },
+  { name: "Sanderson", county: "Baker County, FL" },
+  { name: "Clay Hill", county: "Clay County, FL" },
+  { name: "Lakeside", county: "Clay County, FL" },
+  { name: "Oakleaf Plantation", county: "Clay County, FL" },
+  { name: "Nassauville", county: "Nassau County, FL" },
+  { name: "Callahan", county: "Nassau County, FL" },
+  { name: "Fernandina Beach", county: "Nassau County, FL" },
+  { name: "Hilliard", county: "Nassau County, FL" },
+  { name: "Nassau Village-Ratliff", county: "Nassau County, FL" },
+  { name: "Butler Beach", county: "St. Johns County, FL" },
+  { name: "Crescent Beach", county: "St. Johns County, FL" },
+  { name: "Flagler Estates", county: "St. Johns County, FL" },
+  { name: "Fruit Cove", county: "St. Johns County, FL" },
+  { name: "Hastings", county: "St. Johns County, FL" },
+  { name: "Marineland", county: "St. Johns County, FL" },
+  { name: "Nocatee", county: "St. Johns County, FL" },
+  { name: "Palm Valley", county: "St. Johns County, FL" },
+  { name: "Ponte Vedra Beach", county: "St. Johns County, FL" },
+  { name: "St. Augustine", county: "St. Johns County, FL" },
+  { name: "St. Augustine Beach", county: "St. Johns County, FL" },
+  { name: "St. Augustine Shores", county: "St. Johns County, FL" },
+  { name: "St. Augustine South", county: "St. Johns County, FL" },
+  { name: "Sawgrass", county: "St. Johns County, FL" },
+  { name: "Vilano Beach", county: "St. Johns County, FL" },
+  { name: "World Golf Village", county: "St. Johns County, FL" },
+];
+
+const locationSeeds: LocationSeed[] = [...jacksonvilleNeighborhoodSeeds, ...metroAreaSeeds];
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const hashString = (value: string) => {
+  let hash = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash * 31 + value.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+};
+
+const pickVariant = <T,>(seed: string, options: T[]) => {
+  const index = hashString(seed) % options.length;
+  return options[index];
+};
+
+const pickStats = (seed: string) => {
+  const options = [
+    { value: "24 hrs", label: "average response time" },
+    { value: "48 hrs", label: "walkthrough scheduling" },
+    { value: "3-5 days", label: "typical cleanout window" },
+    { value: "150+", label: "buyers on our list" },
+    { value: "2 days", label: "sale setup time" },
+    { value: "10+", label: "local donation partners" },
+  ];
+  const selected = new Set<number>();
+  let cursor = hashString(seed);
+  while (selected.size < 3) {
+    selected.add(cursor % options.length);
+    cursor = (cursor * 33 + 17) >>> 0;
+  }
+  return Array.from(selected).map((index) => options[index]);
+};
+
+const buildLocation = (seed: LocationSeed): LocationContent => {
+  const slug = slugify(seed.name);
+  const cityLine =
+    seed.cityLine ??
+    (seed.county === "Duval County, FL"
+      ? `${seed.name} • Jacksonville, FL`
+      : `${seed.name} • ${seed.county}`);
+  const heroHeadline = pickVariant(slug, [
+    `Estate sales and cleanouts in ${seed.name}.`,
+    `Trusted estate services for ${seed.name} families.`,
+    `Full-service estate sales for ${seed.name} homes.`,
+  ]);
+  const heroDescription = pickVariant(slug, [
+    `We manage estate sales, cleanouts, donation coordination, and buyouts for ${seed.name} properties with clear timelines and local support.`,
+    `From initial walkthrough to final cleanout, our ${seed.name} team handles cataloging, buyer outreach, and donation logistics with care.`,
+    `${seed.name} clients rely on us for organized estate sales, fast cleanouts, and options to donate or buy out remaining items.`,
+  ]);
+
+  return {
+    slug,
+    name: seed.name,
+    county: seed.county,
+    cityLine,
+    heroHeadline,
+    heroDescription,
+    heroStats: pickStats(slug),
+    serviceHighlights: [
+      {
+        title: "Estate sale management",
+        detail: `Cataloging, pricing, and buyer outreach tailored for ${seed.name} homes and timelines.`,
+      },
+      {
+        title: "Cleanout coordination",
+        detail: `Licensed crews, hauling partners, and donation scheduling to keep ${seed.name} projects moving.`,
+      },
+      {
+        title: "Donation + buyout options",
+        detail: `Donation placement or buyout offers to help ${seed.name} households close quickly.`,
+      },
+    ],
+    localHighlights: [
+      `Scheduling built around ${seed.name} access, parking, and HOA guidelines.`,
+      `Local buyer notifications to attract interest for ${seed.name} sales.`,
+      `Donation routing through trusted ${seed.county} partners.`,
+    ],
+    recentProjects: [
+      {
+        title: `${seed.name} residence`,
+        stat: "2-day sale",
+        detail: "Cataloged household contents, hosted a weekend sale, and coordinated follow-up donations.",
+      },
+      {
+        title: `${seed.name} cleanout`,
+        stat: "72-hour turnover",
+        detail: "Cleared remaining items, coordinated haul-away, and delivered a broom-swept property.",
+      },
+    ],
+    seoTitle: `${seed.name} Estate Sales & Cleanouts | Clear Path Estates`,
+    seoDescription: `Clear Path Estates manages ${seed.name} estate sales, cleanouts, donation coordination, and buyout options across ${seed.county}.`,
+    keywords: [
+      `${seed.name} estate sales`,
+      `${seed.name} cleanouts`,
+      `${seed.name} donation pickup`,
+      `${seed.name} estate services`,
+    ],
+    aboutSection: `${seed.name} is part of the Jacksonville region, and estate timelines here often require clear scheduling, donation coordination, and trusted local buyers. Our team supports families with a structured process that keeps projects organized from walkthrough to settlement.`,
+    neighborhoodInfo: [
+      "Local buyer outreach for estate sale weekends",
+      "Flexible scheduling for downsizing and relocations",
+      "Donation coordination with area partners",
+      "Clear reporting and settlement timelines",
+    ],
+    faqs: [
+      {
+        question: `How quickly can you start an estate sale in ${seed.name}?`,
+        answer: `Most ${seed.name} walkthroughs are scheduled within 24-48 hours, and sale timelines depend on inventory size, property access, and approval needs.`,
+      },
+      {
+        question: `Do you handle donations and hauling in ${seed.name}?`,
+        answer: `Yes. We coordinate donation pickups and haul-away services across ${seed.county} to keep cleanouts on schedule.`,
+      },
+      {
+        question: `Can you offer a buyout for remaining items in ${seed.name}?`,
+        answer: `We can review remaining contents and provide buyout options when a fast closing timeline is needed.`,
+      },
+    ],
+    additionalServices: [
+      "On-site inventory and pricing strategy",
+      "Donation receipts and coordination",
+      "Buyout options for remaining contents",
+      "Cleanout crews and hauling partners",
+    ],
+  };
+};
+
+const manualSlugs = new Set(manualLocationsWithCounty.map((location) => location.slug));
+const generatedLocations = locationSeeds
+  .map(buildLocation)
+  .filter((location) => !manualSlugs.has(location.slug));
+
+export const locations: LocationContent[] = [...manualLocationsWithCounty, ...generatedLocations].sort(
+  (a, b) => a.name.localeCompare(b.name)
+);
 
 export const locationMap = Object.fromEntries(
   locations.map((location) => [location.slug, location])
